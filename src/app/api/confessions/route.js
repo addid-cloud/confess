@@ -1,12 +1,13 @@
 import { NextResponse } from 'next/server'
 import prisma from '../../../../prisma/client'
 
-    export async function POST(req, res) {
-        const { name, content } = await req.json()
+    export async function POST(req) {
+        const { name, content,background } = await req.json()
         const confession = await prisma.confession.create({
             data: {
             name:name,
             content:content,
+            background:background
             },
         })
         return NextResponse.json({

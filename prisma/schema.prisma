@@ -14,6 +14,7 @@ model Confession {
   id        Int      @id @default(autoincrement())
   name      String 
   content   String
+  background String @default("#FFFFFF")
   createdAt DateTime @default(now())
   @@map("confessions")
 }
