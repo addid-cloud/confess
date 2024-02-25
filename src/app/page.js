@@ -75,7 +75,8 @@ const handleCardClick = (card)=>{
           className='flex flex-col justify-center items-center text-center absolute z-20 w-full h-full'
           onSubmit={handleFormSubmit}
         >
-          <div className={`aspect-square w-2/3 bg-[url("/${selectedCard}.png")] rounded flex flex-col justify-center relative bg-contain`}>
+          <div className={`aspect-square w-2/3 rounded flex flex-col justify-center relative bg-contain`}
+            style={{ backgroundImage: `url("/${selectedCard}.png")` }} >
             <textarea
               value={content}
               onChange={(e) => setContent(e.target.value)}
@@ -104,21 +105,28 @@ const handleCardClick = (card)=>{
             <button 
             onClick={()=>handleCardClick(sos.crd)}
             key={index} 
-            className={`w-20 h-20 bg-[url("/${sos.btn}.png")] z-50 bg-contain ${selectedCard===sos.crd ? 'border-green-500': 'border-slate-500' }  border-4 rounded-full aspect-square`} 
+            style={{ backgroundImage: `url("/${sos.btn}.png")` }} 
+            className={`w-20 h-20  z-50 bg-contain ${selectedCard===sos.crd ? 'border-green-500': 'border-slate-500' }  border-4 rounded-full aspect-square`} 
             type='button'></button>
           ))}
         </div>
           </div>
       ) : (
-        <button onClick={() => setShowForm(true)}>Tambah Confession</button> 
+        <div className='flex justify-center mt-4'>
+        <div className='bg-[url("/add.png")] w-60 flex items-center justify-center h-44 bg-cover'>
+        <button onClick={() => setShowForm(true)} className='text-sm mt-6'>Tambah <br/> Confession</button> 
+        </div>
+        </div>
       )}
       {showForm?null:(<ul>
         {confessions.map((confession) => (
-          <div className='flex flex-col justify-center text-center gap-10 items-center'>
-            <li key={confession.id} className={`bg-[url(/${confession.background}.png)] bg-contain w-2/3 aspect-square relative justify-center flex flex-col rounded my-5`}>
+          <div className='flex flex-col justify-center text-center gap-10 items-center '>
+            <li key={confession.id} className={` bg-contain w-2/3 aspect-square relative justify-center flex flex-col rounded my-5 shadow`}
+            style={{ backgroundImage: `url("/${confession.background}.png")` }} >
+            
               <p className='  '>{confession.content}</p>
               <div className='absolute right-5 bottom-5 flex items-center justify-center'>
-                <h1 className='self-start text-sm tracking-widest my-auto mr-2 font-semibold shadow-md'>{confession.name}</h1>
+                <h1 className='self-start text-sm tracking-widest my-auto mr-2 font-semibold drop-shadow'>{confession.name}</h1>
                 <img
                   className='rounded-full w-7'
                   src="https://i0.wp.com/www.repol.copl.ulaval.ca/wp-content/uploads/2019/01/default-user-icon.jpg?ssl=1" alt=""/>
