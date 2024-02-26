@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import Link from 'next/link'
 import { PaperPlaneTilt, XCircle } from '@phosphor-icons/react/dist/ssr'
-
+import Footer from '@/components/Footer'
 export default function Home() {
   const [confessions, setConfessions] = useState([])
   const [name, setName] = useState('')
@@ -112,15 +112,18 @@ const handleCardClick = (card)=>{
         </div>
           </div>
       ) : (
-        <div className='flex justify-center mt-4'>
+        <div>
+        <div className='flex justify-center my-4'>
         <div className='bg-[url("/add.png")] w-60 flex items-center justify-center h-44 bg-cover'>
         <button onClick={() => setShowForm(true)} className='text-sm mt-6'>Tambah <br/> Confession</button> 
         </div>
         </div>
+        
+        </div>
       )}
       {showForm?null:(<ul>
         {confessions.map((confession) => (
-          <div className='flex flex-col justify-center text-center gap-10 items-center '>
+          <div className='flex flex-col justify-center text-center m-0 p-0 items-center bg-[url("/bg-black.png")] bg-contain'>
             <li key={confession.id} className={` bg-contain w-2/3 aspect-square relative justify-center flex flex-col rounded my-5 shadow`}
             style={{ backgroundImage: `url("/${confession.background}.png")` }} >
             
@@ -134,6 +137,7 @@ const handleCardClick = (card)=>{
             </li>
           </div>
         ))}
+      <Footer/>
       </ul>)}
       
     </div>
