@@ -10,6 +10,7 @@ export default function Home() {
   const [content, setContent] = useState('')
   const [showForm, setShowForm] = useState(false)
   const [selectedCard,setSelectedCard] = useState('C1')
+ 
 
   useEffect(() => {
     fetchConfessions()
@@ -44,12 +45,12 @@ const handleCardClick = (card)=>{
       return
     }
     try {
+      setShowForm(false) 
       await axios.post('/api/confessions', { name, content,background:selectedCard })
       fetchConfessions()
       setName('')
       setSelectedCard('C1')
       setContent('')
-      setShowForm(false) 
     } catch (error) {
       console.error('Error adding confession:', error)
     }
