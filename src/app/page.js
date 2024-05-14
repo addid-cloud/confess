@@ -4,6 +4,7 @@ import axios from 'axios'
 import Link from 'next/link'
 import { PaperPlaneTilt, XCircle } from '@phosphor-icons/react/dist/ssr'
 import Footer from '@/components/Footer'
+import AudioPlayer from '@/components/AudioPlayer'
 export default function Home() {
   const [confessions, setConfessions] = useState([])
   const [name, setName] = useState('')
@@ -123,6 +124,21 @@ const handleCardClick = (card)=>{
         </div>
       )}
       {showForm?null:(<ul>
+        {/* yang spesial spesial aja */}
+        <div className='flex flex-col justify-center bg-cover text-center m-0 p-0 items-center bg-[url("/icegif-543.gif")] bg-contain'>
+            <li className={` bg-cover w-2/3 aspect-square relative justify-center flex flex-col rounded my-5 shadow`}
+            style={{ backgroundImage: `url("/giphy.gif")` }} >
+            
+              <AudioPlayer src={"/israel-babi.mp3"} />
+              <div className='absolute right-5 bottom-5 flex items-center justify-center'>
+                <h1 className='self-start text-sm tracking-widest my-auto mr-2 font-semibold drop-shadow'>admin</h1>
+                <img
+                  className='rounded-full w-7'
+                  src="/gojo-satoru.gif" alt=""/>
+              </div>
+            </li>
+          </div>
+          {/* spesialnya sampe sini */}
         {confessions.map((confession) => (
           <div className='flex flex-col justify-center text-center m-0 p-0 items-center bg-[url("/bg-black.png")] bg-contain'>
             <li key={confession.id} className={` bg-contain w-2/3 aspect-square relative justify-center flex flex-col rounded my-5 shadow`}
